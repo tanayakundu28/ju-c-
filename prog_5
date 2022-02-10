@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+class outer{
+    int r;
+    float area;
+    public:
+
+    float findArea(int radius){
+        r=radius;
+        area=3.14*r*r;
+        return area;
+    }
+    class nested{
+        public:
+        float a1;
+        void showData(){
+            cout<<"The area is: "<<a1;
+        }
+    };
+        
+};
+
+int main(){
+    outer obj;
+    outer::nested object;
+    
+    object.a1=obj.findArea(3);
+    object.showData();
+    return 0;
+}
