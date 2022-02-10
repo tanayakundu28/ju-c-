@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+
+class Mammals{
+    public:
+    void show(){
+        cout<<"I am Mammal."<<endl;
+    }
+};
+
+class MarineAnimals{
+    public:
+    void show(){
+        cout<<"I am Marine Animal."<<endl;
+    }
+};
+
+class BlueWhale:public Mammals,public MarineAnimals{
+    public:
+    void show(){
+        cout<<"I belong to both the categories: Mammals as well as Marine Animals."<<endl;
+    }
+};
+
+
+int main(){
+
+    //object creation
+    Mammals mammal;
+    MarineAnimals marine;
+    BlueWhale whale;
+
+    //function calling 
+    mammal.show();
+    marine.show();
+    whale.show();
+
+    //calling function of base class by object of inherited class
+    whale.Mammals::show();
+    whale.MarineAnimals::show();
+
+    return 0;
+}
