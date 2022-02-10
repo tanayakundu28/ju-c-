@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+
+class Rectangle{
+    public:
+    int length,breadth;
+
+    public:
+    void getData(int i){
+        cout<<"\nRectangle "<<i+1<<endl;
+        cout<<"Length: ";
+        cin>>length;
+        cout<<"Breadth: ";
+        cin>>breadth;
+    }
+};
+
+int main(){
+    Rectangle rect[5];
+    int i;
+    
+    for(i=0;i<5;i++){
+        rect[i].getData(i);
+    }
+    cout<<"\nEqual sided Rectangles:"<<endl;
+    for(i=0;i<5;i++){
+        if(rect[i].length==rect[i].breadth)
+            cout<<"Rectangle "<<i+1<<" with length = "<<rect[i].length<<" and breadth = "<<rect[i].breadth<<endl;
+    }
+
+    return 0;
+}
