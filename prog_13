@@ -1,0 +1,114 @@
+#include <iostream>
+using namespace std;
+
+class Shape{
+    public:
+    int side;
+    float ar;
+    Shape(){};
+    Shape(int a){
+        side=a;
+    }
+    public:
+    virtual void area(){
+        ar=side*side;
+    }
+
+    virtual void display(){
+        cout<<"Base class Shape."<<endl;
+        cout<<"The shape is Square."<<endl;
+        cout<<"The side of the square is: "<<side<<endl;
+        cout<<"The area is: "<<ar<<endl;
+    }
+    virtual ~Shape(){
+        cout<<"Destructor of shape."<<endl;
+    }
+};
+
+class Circle:public Shape{
+    public:
+    int radius;
+    float ar;
+    Circle(int r){
+        radius=r;
+    }
+    public:
+    void area(){
+        ar=3.14*radius*radius;
+    }
+
+    void display(){
+        cout<<"Derived class circle ."<<endl;
+        cout<<"The shape is circle"<<endl;
+        cout<<"The radius of the circle is: "<<radius<<endl;
+        cout<<"The area is: "<<ar<<endl;
+    }
+    ~Circle(){
+        cout<<"Destructor of circle."<<endl;
+    }
+};
+
+class Rectangle:public Shape{
+    public:
+    int l,b;
+    float ar;
+    Rectangle(int length,int breadth){
+        l=length;
+        b=breadth;
+    }
+    public:
+    void area(){
+        ar=l*b;
+    }
+    void display(){
+        cout<<"Derived class rectangle."<<endl;
+        cout<<"The shape is Rectangle."<<endl;
+        cout<<"The sides of the Rectangle is: "<<l<<"and"<<b<<endl;
+        cout<<"The area is: "<<ar<<endl;
+    }
+    ~Rectangle(){
+        cout<<"Destructor of Rectangle."<<endl;
+    }
+};
+
+class Trapezoid: public Shape{
+    public:
+    int l1,l2,h;
+    float ar;
+    Trapezoid(int a,int b,int c){
+        l1=a;
+        l2=b;
+        h=c;
+    }
+    public:
+    void area(){
+        ar=0.5*(l1+l2)*h;
+    }
+    void display(){
+        cout<<"Derived class Trapezoid."<<endl;
+        cout<<"The shape is Trapezoid."<<endl;
+        cout<<"The sides of the Trapezoid is: "<<l1<<","<<l2<<"and"<<h<<endl;
+        cout<<"The area is: "<<ar<<endl;
+    }
+    ~Trapezoid(){
+        cout<<"Destructor of Trapezoid."<<endl;
+    }
+};
+
+int main(){
+    int i;
+
+    Shape sh(3);
+    Circle cir(4);
+    Rectangle rect(4,6);
+    Trapezoid trap(2,3,4);
+
+    Shape *p[]={&cir,&rect,&trap};
+    for(i=0;i<3;i++){
+        p[i]->area();
+        p[i]->display();
+    }
+    delete *p;
+
+    return 0;
+}
