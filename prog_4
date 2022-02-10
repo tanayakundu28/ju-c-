@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+class Outer{
+    public:
+    class nested{
+        int max=0;
+        public:
+        
+        void findGreatest(int a,int b, int c){
+            if(a>b && a>c)
+                max=a;
+            else if(b>a && b>c)
+                max=b;
+            else
+                max=c;
+            cout<<"The greatest of the three numbers is: "<<max;
+        }
+    };
+};
+
+int main(){
+    Outer::nested obj;
+    int a,b,c;
+    cout<<"Enter three numbers: ";
+    cin>>a>>b>>c;
+    obj.findGreatest(a,b,c);
+    return 0;
+}
