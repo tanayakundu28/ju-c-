@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+class Employee{
+    public:
+    int id,salary;
+    char name[30];
+
+    public:
+    void getData(){
+        cout<<"\nEmployee name:";
+        cin>>name;
+        cout<<"\nEmployee id:";
+        cin>>id;
+        cout<<"\nEmployee salary:";
+        cin>>salary;
+    }
+};
+
+int main(){
+    Employee emp[5];
+    int n,i;
+    cout<<"Enter number of employees:";
+    cin>>n;
+    for(i=0;i<n;i++){
+        emp[i].getData();
+    }
+    cout<<"\nEmployee Details with salary higher than 50000\n";
+    for(i=0;i<n;i++){
+        if(emp[i].salary>50000){
+            cout<<"Employee name: "<<emp[i].name<<endl;
+            cout<<"Employee id: "<<emp[i].id<<endl;
+        }
+    }
+
+
+    return 0;
+}
