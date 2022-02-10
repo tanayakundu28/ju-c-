@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+
+class Fruits{
+    public:
+    static int numberOfFruit;
+    Fruits(){
+        numberOfFruit++;
+    }
+};
+
+class Apples:public Fruits{
+    public:
+    static int numberOfApple;
+    Apples(){
+        numberOfApple++;
+    }
+};
+
+class Mangoes:public Fruits{
+    public:
+    static int numberOfMango;
+    Mangoes(){
+        numberOfMango++;
+    }
+};
+
+int Fruits::numberOfFruit=0;
+int Apples::numberOfApple=0;
+int Mangoes::numberOfMango=0;
+
+int main(){
+    Apples a1,a2,a3,a4,a5;
+    Mangoes m1,m2,m3,m4;
+
+    cout<<"Total number of fruits are: "<<Fruits::numberOfFruit<<endl;
+    cout<<"Number of Apple: "<<Apples::numberOfApple<<endl;
+    cout<<"Number of Mangoes: "<<Mangoes::numberOfMango<<endl;
+
+    return 0;
+}
