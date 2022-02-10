@@ -1,0 +1,38 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main(){
+    string st;
+    int ch=0,word=0,lines=0;
+    char singleCharacter;
+    
+    
+    ifstream fin;
+    fin.open("sample.txt");
+    if(fin.is_open())
+        cout<<"file is open"<<endl;
+    
+    fin.get(singleCharacter);
+    cout<<singleCharacter<<endl;
+
+    while(fin){
+        if(singleCharacter==' '|| singleCharacter==','|| singleCharacter=='.')
+            word+=1;
+        
+        if(singleCharacter!=' '&& singleCharacter!='\n')
+            ch+=1;
+        
+        if(singleCharacter=='\n')
+            lines++;
+        
+        fin.get(singleCharacter);
+    }
+    
+    fin.close();
+    cout<<"Number of characters: "<<ch<<endl;
+    cout<<"Number of words: "<<word<<endl;
+    cout<<"Number of lines: "<<lines+1<<endl;
+    
+    return 0;
+}
