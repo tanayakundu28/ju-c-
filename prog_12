@@ -1,0 +1,52 @@
+#include <iostream>
+using namespace std;
+
+class Shape{
+    public:
+    void display(){
+        cout<<"This is a shape."<<endl;
+    }
+}; 
+
+class Polygon:public Shape{
+    public:
+    void display(){
+        cout<<"Polygon is a shape."<<endl;
+    }
+};
+
+class Rectangle:public Polygon{
+    public:
+    void display(){
+        cout<<"Rectangle is a Polygon."<<endl;
+    }
+};
+
+class Triangle:public Polygon{
+    public:
+    void display(){
+        cout<<"Triangle is a Polygon."<<endl;
+    }
+};
+
+class Square:public Rectangle{
+    public:
+    void display(){
+        cout<<"Square is a Rectangle."<<endl;
+    }
+};
+
+int main(){
+    Shape sh;
+    Polygon pol;
+    Rectangle rect;
+    Triangle tri;
+    Square sq;
+
+    sh.display();
+    pol.display();
+    rect.display();
+    tri.display();
+    sq.display();
+    return 0;
+}
