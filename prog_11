@@ -1,0 +1,147 @@
+#include <iostream>
+using namespace std;
+ 
+class Marks
+{
+protected:
+    string name;
+    int rollno; // instance roll no that takes value from thr static roll no generator
+    int marks[3];
+ 
+public:
+    static int rollno_generator;
+    Marks()
+    {
+    }
+    Marks(string n)
+    {
+        rollno_generator++; // with each object creation it is incremented
+        rollno = rollno_generator;
+        name = n;
+    }
+    void display()
+    {
+        cout << "Roll Number:\t" << rollno << "\n";
+        cout << "Name:\t" << name << "\n";
+    }
+    int getTotal(int p, int c, int m)
+    {
+        marks[0] = p;
+        marks[1] = c;
+        marks[2] = m;
+        return p + c + m;
+    }
+};
+int Marks::rollno_generator = 0;
+ 
+class Physics : public Marks
+{
+private:
+    int mark;
+ 
+public:
+    Physics()
+    {
+    }
+    Physics(int mark)
+    {
+        this->mark = mark;
+        marks[0] = mark;
+    }
+    int getPhys()
+    {
+        return mark;
+    }
+};
+ 
+class Chemistry : public Marks
+{
+private:
+    int mark;
+ 
+public:
+    Chemistry()
+    {
+    }
+    Chemistry(int mark)
+    {
+        this->mark = mark;
+        marks[1] = mark;
+    }
+    int getChem()
+    {
+        return mark;
+    }
+};
+ 
+class Mathematics : public Marks
+{
+private:
+    int mark;
+ 
+public:
+    Mathematics()
+    {
+    }
+    Mathematics(int mark)
+    {
+        this->mark = mark;
+        marks[2] = mark;
+    }
+    int getMath()
+    {
+        return mark;
+    }
+};
+ 
+int main()
+{
+    int n;
+    cout << "Enter total number of students in the class:";
+    cin >> n;
+ 
+    double totalSum = 0.0;
+    int phy;
+    int chem;
+    int maths;
+    string name;
+ 
+    Marks object_array[n]; // array of objects
+ 
+    int total[n];
+    for (int i = 0; i < n; i++)
+    {
+        cout << "Student " << (i + 1) << endl;
+        cout << "Enter the student name: ";
+        fflush(stdin);
+        getline(cin, name);
+        Marks temp_obj(name);
+        object_array[i] = temp_obj;
+        cout << "Enter the student Physics marks: ";
+        cin >> phy;
+        cout << "Enter the student Chemistry marks: ";
+        cin >> chem;
+        cout << "Enter the student Mathematics marks: ";
+        cin >> maths;
+        Physics p(phy);
+        Chemistry c(chem);
+        Mathematics m(maths);
+        total[i] = object_array[i].getTotal(p.getPhys(), c.getChem(), m.getMath());
+    }
+ 
+    for (int i = 0; i < n; i++)
+    {
+        cout << "Student: " << (i + 1) << endl;
+        object_array[i].display();
+        cout << "Total  marks: " << total[i] << endl;
+    }
+ 
+    double average = 0.0;
+    for (int i = 0; i < n; i++)
+    {
+        totalSum += total[i];
+    }
+    cout << "Total marks of the class is: " << totalSum;
+    cout << "\nThe average marks of the class is: " << totalSum / n;
+    return 0;
+}
