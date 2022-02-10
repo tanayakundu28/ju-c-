@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+class Person {
+public:
+	void show()
+	{
+		cout << "Hello from Person \n";
+	}
+};
+
+class Employee : public virtual Person {
+};
+
+class Student : public virtual Person {
+};
+
+class Manager : public Employee, public Student {
+};
+
+int main()
+{
+	Manager object;
+	object.show();
+
+    return 0;
+}
