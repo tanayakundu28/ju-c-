@@ -1,0 +1,74 @@
+#include <iostream>
+using namespace std;
+
+class Calculator{
+    public:
+
+    class add{
+        public:
+        void getSum(int a,int b){
+            cout<<"The sum is: "<<a+b<<endl;
+        }
+        class subtract{
+            public:
+            void getDiff(int a,int b){
+                cout<<"The difference is: "<<a-b<<endl;
+            }
+            class multiply{
+                public:
+                void getProduct(int a, int b){
+                    cout<<"The product is: "<<a*b<<endl;
+                }
+                class divide{
+                    public:
+                    void getQuotient(float a, float b){
+                        cout<<"The quotient is: "<<a/b<<endl;
+                    }
+                };
+            };
+        };
+    };
+};
+
+int main(){
+    int a,b,ch;
+    float c,d;
+    cout<<"\nEnter your choice:"<<endl;
+    cout<<"1.Add."<<endl;
+    cout<<"2.Subtract."<<endl;
+    cout<<"3.Multiply."<<endl;
+    cout<<"4.Divide."<<endl;
+    cin>>ch;
+    Calculator::add sum;
+    Calculator::add::subtract diff;
+    Calculator::add::subtract::multiply prod;
+    Calculator::add::subtract::multiply::divide quot;
+    switch(ch)
+    {
+        case 1:
+            cout<<"\nEnter two numbers:";
+            cin>>a>>b;
+            sum.getSum(a,b);
+            break;
+        case 2:
+            cout<<"\nEnter two numbers:";
+            cin>>a>>b;
+            diff.getDiff(a,b);
+            break;
+        case 3:
+            cout<<"\nEnter two numbers:";
+            cin>>a>>b;
+            prod.getProduct(a,b);
+            break;
+        case 4:
+            cout<<"\nEnter two numbers:";
+            cin>>c>>d;
+            quot.getQuotient(c,d);
+            break;
+        default:
+            cout<<"Wrong choice!";
+            break;
+        
+    }
+    return 0;
+}
